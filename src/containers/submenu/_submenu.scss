@@ -1,0 +1,31 @@
+.submenu-wrapper {
+  width: 100%;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  ul {
+    width: 100%;
+    list-style-type: none;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #2e2e2e;
+    li {
+      padding: 15px 5px 10px 5px;
+      box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+      border-right: 1px solid #2e2e2e;
+      font-size: 1.3rem;
+      &.active {
+        border-bottom: 2px solid #fff;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}

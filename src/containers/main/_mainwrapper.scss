@@ -1,0 +1,12 @@
+@use "../../components/post-list/posts";
+@use "../../components/messages/messages";
+
+.main-content-wrapper {
+  width: 100%;
+  min-height: 90vh;
+  margin: 0 auto 20px auto;
+  padding: 20px 5px;
+  box-sizing: border-box;
+  display: flex;
+  background: #242424;
+}
