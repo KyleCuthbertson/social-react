@@ -4,3 +4,81 @@
   background: none;
   color: #fff;
 }
+
+.profile-menu {
+  width: 240px;
+  height: 100%;
+  position: fixed;
+  right: -240px;
+  top: 0;
+  background: #000000f5;
+  z-index: 10000;
+  color: #fff;
+}
+
+.show {
+  -webkit-animation: slide 0.5s forwards;
+  animation: slide 0.5s forwards;
+}
+
+.btn-close {
+  font-size: 1.75rem;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+
+.profile-menu-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.profile-menu-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  li {
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+  }
+}
+
+@-webkit-keyframes slide {
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slide {
+  100% {
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 380px) {
+  .profile-menu {
+    width: 320px;
+    right: -320px;
+  }
+
+  .profile-menu-list li {
+    font-size: 1.75rem;
+    margin-bottom: 50px;
+  }
+
+  .btn-close {
+    font-size: 2rem;
+    position: absolute;
+    top: 25px;
+    right: 35px;
+  }
+}
