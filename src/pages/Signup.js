@@ -1,15 +1,9 @@
 
 import { useState } from "react";
-import { useEffect } from "react";
 
 const Signup = () => {
 
-
   const [showPassword, setShowPassword] = useState(false);
-
-  useEffect(() => {
-    console.log(showPassword);
-  }, [showPassword])
 
   return (
     <>
