@@ -1,0 +1,88 @@
+.signup-title {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 25px;
+  margin-top: 40px;
+}
+
+.signup-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 0 40px 120px 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  label {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  input {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    padding: 5px 5px;
+    border: 0;
+    border-radius: 2px;
+    &:focus {
+      background: #f5f5f5;
+    }
+  }
+  label[for="showPassword"] {
+    font-size: 0.8rem;
+  }
+  input[type="checkbox"] {
+    margin-bottom: 0;
+    min-width: 0;
+    min-height: 0;
+    margin-right: 10px;
+  }
+}
+
+.password-minimum-text {
+  color: #fff;
+  opacity: 0.5;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-top: -25px;
+  margin-bottom: 10px;
+}
+
+.signup-btn-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  .signup-btns {
+    border: 0;
+    border-radius: 3px;
+    background: #fff;
+    padding: 15px 10px;
+    color: #000;
+    font-size: 1.4rem;
+    font-weight: 400;
+    min-width: 55%;
+    cursor: pointer;
+  }
+  button[type="submit"] {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 380px) {
+  .signup-wrapper {
+    padding-top: 30px;
+  }
+}

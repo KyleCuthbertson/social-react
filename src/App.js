@@ -6,9 +6,11 @@ import Header from './containers/header/Header';
 import MainWrapper from './containers/main/MainWrapper';
 import SubMenu from './containers/submenu/SubMenu';
 
+import Signup from './pages/Signup';
+
 const App = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   // Submenu functionality
   const [category, setCategory] = useState('home');
@@ -20,9 +22,16 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
-      <SubMenu setContent={setContent} selectedContent={category}/>
-      <MainWrapper loggedIn={isLoggedIn} selectedContent={category}/>
+      {
+      isLoggedIn ? 
+      <>
+        <Header />
+        <SubMenu setContent={setContent} selectedContent={category}/>
+        <MainWrapper loggedIn={isLoggedIn} selectedContent={category}/>
+      </>
+        : 
+        <Signup/>
+      }
     </div>
   );
 }
