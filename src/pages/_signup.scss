@@ -7,12 +7,14 @@
 
 .signup-wrapper {
   width: 100%;
+  max-width: 450px;
   box-sizing: border-box;
   color: #fff;
   padding: 0 40px 120px 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .signup-form {
@@ -21,6 +23,7 @@
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
+
   margin: 0 auto;
   label {
     margin-bottom: 10px;
