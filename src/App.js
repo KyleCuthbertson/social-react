@@ -9,6 +9,7 @@ import SubMenu from './containers/submenu/SubMenu';
 const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  
   // Submenu functionality
   const [category, setCategory] = useState('home');
 
