@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Profile from '../../components/buttons/Profile';
+import Profile from './sidemenu/Profile';
 
 const Header = () => {
 
@@ -8,7 +8,6 @@ const Header = () => {
 
   const openMenuToggle = (menuToggle) => {
     setMenuOpen(menuToggle);
-    console.log(menuToggle);
   }
 
   return (
