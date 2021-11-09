@@ -1,11 +1,11 @@
-.signup-title {
+.form-title {
   font-size: 2.4rem;
   color: #fff;
   margin-bottom: 25px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
-.signup-wrapper {
+.form-wrapper {
   width: 100%;
   max-width: 450px;
   box-sizing: border-box;
@@ -17,7 +17,7 @@
   margin: 0 auto;
 }
 
-.signup-form {
+.forms {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -81,6 +81,23 @@
   }
   button[type="submit"] {
     margin-bottom: 30px;
+  }
+}
+
+.no-account-wrapper {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  background: #1f1f1f;
+  border-radius: 4px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  a {
+    color: #fff;
+  }
+  p {
+    margin-bottom: 10px;
   }
 }
 

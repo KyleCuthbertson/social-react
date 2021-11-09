@@ -6,7 +6,7 @@ import Header from './containers/header/Header';
 import MainWrapper from './containers/main/MainWrapper';
 import SubMenu from './containers/submenu/SubMenu';
 
-import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 const App = () => {
 
@@ -29,8 +29,11 @@ const App = () => {
         <SubMenu setContent={setContent} selectedContent={category}/>
         <MainWrapper loggedIn={isLoggedIn} selectedContent={category}/>
       </>
-        : 
-        <Signup/>
+        :
+      <>
+        <Header/>
+        <Login/>
+      </>
       }
     </div>
   );

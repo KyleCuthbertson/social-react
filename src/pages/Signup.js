@@ -7,9 +7,9 @@ const Signup = () => {
 
   return (
     <>
-      <div className="signup-wrapper">
-      <h1 className="signup-title">Sign up</h1>
-        <form id="signup-form" className="signup-form">
+      <div className="form-wrapper">
+        <h1 className="form-title">Sign up</h1>
+        <form id="signup-form" className="forms">
           <label htmlFor="firstName">First Name: </label>
             <input type="text" id="firstName" name="firstName" required />
 
