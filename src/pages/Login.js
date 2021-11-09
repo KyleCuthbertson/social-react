@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -15,10 +16,9 @@ const Login = () => {
             <button className="signup-btns" type="submit">Log in</button>
           </div>
 
-          {/* This will link to Sign up page to create a new account */}
           <div className="no-account-wrapper">
             <p>Don't have an account?</p>
-            <a href="google.com"><p>Sign up here!</p></a>
+            <Link to="/signup"><p>Sign up here!</p></Link>
           </div>
 
         </form>

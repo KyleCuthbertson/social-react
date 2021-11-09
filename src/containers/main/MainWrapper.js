@@ -100,11 +100,7 @@ const MainWrapper = (props) => {
     <>
       <main>
         <div className="main-content-wrapper">
-          {loggedIn ? 
-            <CheckContent/>
-          : 
-          ""
-          }
+          <CheckContent/>
         </div>
       </main>
     </>
