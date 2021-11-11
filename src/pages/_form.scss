@@ -23,7 +23,6 @@
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-
   margin: 0 auto;
   label {
     margin-bottom: 10px;
@@ -37,7 +36,8 @@
     margin-bottom: 30px;
     padding: 5px 5px;
     border: 0;
-    border-radius: 2px;
+    border-radius: 4px;
+    font-size: 1.1rem;
     &:focus {
       background: #f5f5f5;
     }
@@ -70,13 +70,13 @@
   margin-top: 15px;
   .signup-btns {
     border: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     background: #fff;
     padding: 15px 10px;
     color: #000;
     font-size: 1.4rem;
     font-weight: 400;
-    min-width: 55%;
+    min-width: 50%;
     cursor: pointer;
   }
   button[type="submit"] {
@@ -109,6 +109,16 @@
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.back-btn {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 30px 0 5px 0;
+  text-decoration: none;
+  i {
+    margin-right: 5px;
+  }
 }
 
 @media screen and (min-width: 380px) {

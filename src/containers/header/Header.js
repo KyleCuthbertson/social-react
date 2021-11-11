@@ -1,12 +1,24 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { LogInContext } from '../../App';
 
 import Profile from './sidemenu/Profile';
 
-const Header = (props) => {
+const Header = () => {
 
-  const { loggedIn } = props;
+  const loggedIn = useContext(LogInContext);
+
+  const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate('/');
+    }
+  }, []);
+
 
   const openMenuToggle = (menuToggle) => {
     if (loggedIn) {
@@ -20,7 +32,7 @@ const Header = (props) => {
     <>
       <header>
         <h2 className="app-title">ConnectMe</h2>
-        <Profile menu={menuOpen} toggleMenu={openMenuToggle}/>
+        <Profile menu={menuOpen} setLogin={loggedIn} toggleMenu={openMenuToggle}/>
       </header>
     </>
   )

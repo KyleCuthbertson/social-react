@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './App.scss';
 
@@ -10,13 +10,14 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-import { db } from './utils/firebaseConfig';
-import app from './utils/firebaseConfig';
+// import { db } from './utils/firebaseConfig';
+// import app from './utils/firebaseConfig';
+
+export const LogInContext = React.createContext();
 
 const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState(false);
 
   // Submenu functionality
   const [category, setCategory] = useState('home');
@@ -24,31 +25,32 @@ const App = () => {
     setCategory(selectedCategory);
   }
 
-  // const response = db.collection('users');
-  // response.get().then(
-  //   (snapshot) => {
-  //     snapshot.docs.forEach(doc => {
-  //       console.log(doc.data());
-  //       console.log(doc.id);
-  //     })
+  // useEffect(() => {
+  //   const findingUser = window.localStorage.getItem("loggedIn");
+
+  //   if (findingUser) {
+  //     const loggedInUser = JSON.parse(findingUser);
+  //     setIsLoggedIn(loggedInUser);
   //   }
-  // )
+  // }, [isLoggedIn])
+
 
 
   return (
+    <LogInContext.Provider value={isLoggedIn}>
     <Router>
       <div className="App">
-        <Header loggedIn={isLoggedIn}/>
+        <Header loggedIn={isLoggedIn} setLogIn={setIsLoggedIn}/>
         <Routes>
           {
           !isLoggedIn ? 
           <>
-            <Route path="/" element={<Login setToken={setToken} setLogIn={setIsLoggedIn}/>}/> 
-            <Route path="/signup" element={<Signup setToken={setToken}/>}/>
+            <Route path="/" element={<Login loggedIn={isLoggedIn} setLogIn={setIsLoggedIn}/>}/> 
+            <Route path="/signup" element={<Signup setLogIn={setIsLoggedIn}/>}/>
           </>
             : 
           <Route 
-            path="/" 
+            path="/home" 
             element={
             <>
               <SubMenu setContent={setContent} selectedContent={category}/>
@@ -58,10 +60,9 @@ const App = () => {
           />
           }
         </Routes>
-        
       </div>
     </Router>
-    
+  </LogInContext.Provider>
   );
 }
 

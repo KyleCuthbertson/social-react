@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 
 const Profile = (props) => {
 
-  const { menu, toggleMenu } = props;
+  const { menu, setIsLoggedIn, toggleMenu } = props;
+
+  const logOut = () => {
+    toggleMenu(false);
+    setIsLoggedIn(false);
+  }
 
   return (
     <>
@@ -14,7 +19,7 @@ const Profile = (props) => {
             <Link to="/home" onClick={() => toggleMenu(false)}><li>Home</li></Link>
             <Link to="/myprofile" onClick={() => toggleMenu(false)}><li>My Profile</li></Link>
             <Link to="/settings" onClick={() => toggleMenu(false)}><li>Settings</li></Link>
-            <Link to="/" onClick={() => toggleMenu(false)}><li>Log Out</li></Link>
+            <Link to="/" onClick={logOut}><li>Log Out</li></Link>
           </ul>
         </div>
       </div>

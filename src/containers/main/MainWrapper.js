@@ -1,4 +1,6 @@
 
+import { useEffect } from "react";
+
 import PostList from "../../components/post-list/PostList";
 import Messages from "../../components/messages/Messages";
 
@@ -86,7 +88,7 @@ const MainWrapper = (props) => {
     }
   ];
 
-  const CheckContent = () => {
+  const ChangeContent = () => {
     if (selectedContent === 'home') {
       return <PostList users={dummyUsers}/>
     } else if (selectedContent === 'search') {
@@ -96,11 +98,15 @@ const MainWrapper = (props) => {
     }
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <main>
         <div className="main-content-wrapper">
-          <CheckContent/>
+          <ChangeContent/>
         </div>
       </main>
     </>
