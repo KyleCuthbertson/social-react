@@ -1,12 +1,8 @@
 
-
 const Posts = (props) => {
-
 
   const { users } = props;
 
-  console.log(users);
-  
   return (
     <>
     {

@@ -1,15 +1,31 @@
 
 import { useState } from "react";
 
+import { db } from "../utils/firebaseConfig";
+
 const Signup = () => {
 
   const [showPassword, setShowPassword] = useState(false);
+
+  const signupForm = document.querySelector("#signup-form");
+
+  // Creating new data into Firebase
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // db.collection("users").add({
+    //   firstName: signupForm.firstName.value,
+    //   lastName: signupForm.lastName.value,
+    //   email: signupForm.email.value,
+    //   password: signupForm.password.value
+    // });
+  }
 
   return (
     <>
       <div className="form-wrapper">
         <h1 className="form-title">Sign up</h1>
-        <form id="signup-form" className="forms">
+        <form id="signup-form" onSubmit={handleSubmit} className="forms">
           <label htmlFor="firstName">First Name: </label>
             <input type="text" id="firstName" name="firstName" required />
 

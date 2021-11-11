@@ -10,16 +10,29 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
+import { db } from './utils/firebaseConfig';
+import app from './utils/firebaseConfig';
+
 const App = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(false);
+
   // Submenu functionality
   const [category, setCategory] = useState('home');
-
   const setContent = (selectedCategory) => {
     setCategory(selectedCategory);
   }
+
+  // const response = db.collection('users');
+  // response.get().then(
+  //   (snapshot) => {
+  //     snapshot.docs.forEach(doc => {
+  //       console.log(doc.data());
+  //       console.log(doc.id);
+  //     })
+  //   }
+  // )
 
 
   return (
@@ -27,10 +40,15 @@ const App = () => {
       <div className="App">
         <Header loggedIn={isLoggedIn}/>
         <Routes>
-          <Route path="/" element={<Login/>}/>
-
+          {
+          !isLoggedIn ? 
+          <>
+            <Route path="/" element={<Login setToken={setToken} setLogIn={setIsLoggedIn}/>}/> 
+            <Route path="/signup" element={<Signup setToken={setToken}/>}/>
+          </>
+            : 
           <Route 
-            path="/home" 
+            path="/" 
             element={
             <>
               <SubMenu setContent={setContent} selectedContent={category}/>
@@ -38,12 +56,12 @@ const App = () => {
             </>
             }
           />
-          
-          <Route path="/signup" element={<Signup/>}/>
+          }
         </Routes>
         
       </div>
     </Router>
+    
   );
 }
 

@@ -8,7 +8,7 @@ const Profile = (props) => {
     <>
       <button onClick={() => toggleMenu(true)} className="profile-btn"><i className="fas fa-user-circle"></i></button>
       <div className={menu ? "profile-menu show" : "profile-menu"}>
-        <span onClick={() => toggleMenu(false)} className="btn-close"><i class="fas fa-times"></i></span>
+        <span onClick={() => toggleMenu(false)} className="btn-close"><i className="fas fa-times"></i></span>
         <div className="profile-menu-wrapper">
           <ul className="profile-menu-list">
             <Link to="/home" onClick={() => toggleMenu(false)}><li>Home</li></Link>
