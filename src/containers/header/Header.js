@@ -13,9 +13,13 @@ const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+
+  // Keeps logged out users from entering app content
   useEffect(() => {
     if (!loggedIn) {
       navigate('/');
+    } else {
+      navigate('/home');
     }
   }, []);
 

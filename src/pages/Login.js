@@ -31,15 +31,13 @@ const Login = (props) => {
       await auth.signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
       setLoading(false);
       setLogIn(true);
-      navigate('/home');
-      setTimeout(() => {
-        console.log(loggedIn);
-        window.localStorage.setItem("loggedIn", loggedIn);
-      }, 3000)
+      navigate('/home'); // Pushes user to home content
+      localStorage.setItem("loggedIn", true); // Sets localstorage true to keep user online after page refresh
     } 
     catch (err) {
       console.error("User not found: " + err);
       setError(true);
+      localStorage.setItem("loggedIn", false); // Sets the localstorage false if unsuccessful logging in
       setTimeout(() => {
         setError(false);
       }, 5000)
@@ -47,7 +45,6 @@ const Login = (props) => {
     }
   };
   
-
   return (
     <>
       <div className="form-wrapper">

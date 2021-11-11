@@ -10,9 +10,6 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-// import { db } from './utils/firebaseConfig';
-// import app from './utils/firebaseConfig';
-
 export const LogInContext = React.createContext();
 
 const App = () => {
@@ -26,15 +23,13 @@ const App = () => {
   }
 
   // useEffect(() => {
-  //   const findingUser = window.localStorage.getItem("loggedIn");
+  //   const findingUser = localStorage.getItem("loggedIn");
 
-  //   if (findingUser) {
+  //   if (findingUser === true) {
   //     const loggedInUser = JSON.parse(findingUser);
   //     setIsLoggedIn(loggedInUser);
   //   }
   // }, [isLoggedIn])
-
-
 
   return (
     <LogInContext.Provider value={isLoggedIn}>
