@@ -13,13 +13,14 @@ const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const findingUser = localStorage.getItem("loggedIn");
 
   // Keeps logged out users from entering app content
   useEffect(() => {
-    if (!loggedIn) {
-      navigate('/');
-    } else {
+    if (findingUser === "true") {
       navigate('/home');
+    } else {
+      navigate('/');
     }
   }, []);
 

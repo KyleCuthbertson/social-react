@@ -33,9 +33,11 @@ const Signup = (props) => {
       setLoading(true);
       await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
       setLogIn(true);
+      localStorage.setItem("loggedIn", true); // Sets localstorage true to keep user online after page refresh
       navigate('/home');
     } catch (err) {
       setError(err.message);
+      localStorage.setItem("loggedIn", false); // Sets the localstorage false if unsuccessful logging in
       setTimeout(() => {
         setError("");
       }, 5000)

@@ -5,6 +5,7 @@ const Profile = (props) => {
   const { menu, setIsLoggedIn, toggleMenu } = props;
 
   const logOut = () => {
+    window.localStorage.setItem("loggedIn", false);
     toggleMenu(false);
     setIsLoggedIn(false);
   }

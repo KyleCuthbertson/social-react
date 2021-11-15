@@ -1,15 +1,13 @@
 import  { Link } from 'react-router-dom'
 
-import { useState, useContext, useRef } from 'react';
+import { useState, useRef } from 'react';
 import app from "../utils/firebaseConfig";
 
 import { useNavigate } from 'react-router-dom';
 
-import { LogInContext } from '../App';
-
 const Login = (props) => {
 
-  const { setLogIn, loggedIn } = props;
+  const { setLogIn } = props;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -17,8 +15,6 @@ const Login = (props) => {
   const passwordRef = useRef();
 
   const navigate = useNavigate();
-
-  // const loggedIn = useContext(LogInContext);
 
   const auth = app.auth();
 
@@ -32,7 +28,7 @@ const Login = (props) => {
       setLoading(false);
       setLogIn(true);
       navigate('/home'); // Pushes user to home content
-      localStorage.setItem("loggedIn", true); // Sets localstorage true to keep user online after page refresh
+      window.localStorage.setItem("loggedIn", true); // Sets localstorage true to keep user online after page refresh
     } 
     catch (err) {
       console.error("User not found: " + err);

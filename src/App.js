@@ -22,14 +22,13 @@ const App = () => {
     setCategory(selectedCategory);
   }
 
-  // useEffect(() => {
-  //   const findingUser = localStorage.getItem("loggedIn");
+  const findingUser = localStorage.getItem("loggedIn");
 
-  //   if (findingUser === true) {
-  //     const loggedInUser = JSON.parse(findingUser);
-  //     setIsLoggedIn(loggedInUser);
-  //   }
-  // }, [isLoggedIn])
+  useEffect(() => {
+    if (findingUser === "true") {
+      setIsLoggedIn(true);
+    }
+  }, [])
 
   return (
     <LogInContext.Provider value={isLoggedIn}>
@@ -40,7 +39,7 @@ const App = () => {
           {
           !isLoggedIn ? 
           <>
-            <Route path="/" element={<Login loggedIn={isLoggedIn} setLogIn={setIsLoggedIn}/>}/> 
+            <Route path="/" element={<Login setLogIn={setIsLoggedIn}/>}/> 
             <Route path="/signup" element={<Signup setLogIn={setIsLoggedIn}/>}/>
           </>
             : 
