@@ -1,7 +1,7 @@
 
 import Posts from "./Posts";
 
-const PostList = (props) => {
+const PostList = (props: any) => {
 
   const { users } = props; 
 

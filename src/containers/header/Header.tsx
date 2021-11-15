@@ -25,7 +25,7 @@ const Header = () => {
   }, []);
 
 
-  const openMenuToggle = (menuToggle) => {
+  const openMenuToggle = (menuToggle: boolean) => {
     if (loggedIn) {
       setMenuOpen(menuToggle);
     } else {

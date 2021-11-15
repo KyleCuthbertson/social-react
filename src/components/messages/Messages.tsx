@@ -4,7 +4,7 @@ import Profile2 from '../../assets/images/profile-2.png';
 import Profile3 from '../../assets/images/profile-3.png';
 
 const Messages = () => {
-  
+
   return (
     <>
       <div className="messages-wrapper">

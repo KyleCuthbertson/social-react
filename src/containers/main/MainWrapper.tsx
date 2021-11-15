@@ -8,8 +8,12 @@ import Profile1 from '../../assets/images/profile-1.png';
 import Profile2 from '../../assets/images/profile-2.png';
 import Profile3 from '../../assets/images/profile-3.png';
 
+interface mainWrapperProps {
+  selectedContent: string,
+  loggedIn: boolean
+}
 
-const MainWrapper = (props) => {
+const MainWrapper = (props: mainWrapperProps) => {
 
   const { selectedContent, loggedIn } = props;
 
@@ -70,31 +74,13 @@ const MainWrapper = (props) => {
     },
   ]
 
-  const dummyMessages = [
-    {
-      id : 1,
-      messageContent : "Hello there, my name is John. Want to chat?",
-      from : "John Doe"
-    },
-    {
-      id : 2,
-      messageContent : "Yeah sounds like a great idea!",
-      from : "Hannah Runnings"
-    },
-    {
-      id : 3,
-      messageContent : "This can be the first test message",
-      from : "Anna Smith-James"
-    }
-  ];
-
   const ChangeContent = () => {
     if (selectedContent === 'home') {
       return <PostList users={dummyUsers}/>
     } else if (selectedContent === 'search') {
       return <PostList users={dummyUsers}/>
     } else {
-      return <Messages messages={dummyMessages} users={dummyUsers}/>
+      return <Messages />
     }
   }
 
