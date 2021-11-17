@@ -1,39 +1,41 @@
-import  { Link } from 'react-router-dom'
+import  { Link, useNavigate } from 'react-router-dom'
 
 import { useState, useRef } from 'react';
 import app from "../utils/firebaseConfig";
 
-import { useNavigate } from 'react-router-dom';
+import { loginProps } from "./types";
 
-const Login = (props) => {
+const Login = (props: loginProps) => {
 
   const { setLogIn } = props;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
   const auth = app.auth();
 
-  const userLogin = async (e) => {
+  const userLogin = async (e: React.FormEvent<HTMLFormElement>) => {
 
     e.preventDefault();
     setLoading(true);
 
     try {
-      await auth.signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
-      setLoading(false);
-      setLogIn(true);
-      navigate('/home'); // Pushes user to home content
-      window.localStorage.setItem("loggedIn", true); // Sets localstorage true to keep user online after page refresh
+      if (emailRef.current && passwordRef.current) {
+        await auth.signInWithEmailAndPassword(emailRef.current['value'], passwordRef.current['value']);
+        setLoading(false);
+        setLogIn(true);
+        navigate('/home'); // Pushes user to home content
+        window.localStorage.setItem("loggedIn", "true"); // Sets localstorage true to keep user online after page refresh  
+      }    
     } 
     catch (err) {
       console.error("User not found: " + err);
       setError(true);
-      localStorage.setItem("loggedIn", false); // Sets the localstorage false if unsuccessful logging in
+      localStorage.setItem("loggedIn", "false"); // Sets the localstorage false if unsuccessful logging in
       setTimeout(() => {
         setError(false);
       }, 5000)

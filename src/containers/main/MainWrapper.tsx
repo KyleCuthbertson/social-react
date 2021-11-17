@@ -15,7 +15,7 @@ interface mainWrapperProps {
 
 const MainWrapper = (props: mainWrapperProps) => {
 
-  const { selectedContent, loggedIn } = props;
+  const { selectedContent } = props;
 
   const dummyUsers = [
     {

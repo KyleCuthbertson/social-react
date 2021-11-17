@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import app from "../utils/firebaseConfig";
+import { loginProps } from "./types";
 
-const Signup = (props) => {
+const Signup = (props: loginProps) => {
 
   const auth = app.auth();
 
@@ -14,30 +15,35 @@ const Signup = (props) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordConfirmRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
   // Creating new user into Firebase
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
+    if (passwordRef.current && passwordConfirmRef.current) {
+      if (passwordRef.current['value'] !== passwordConfirmRef.current['value']) {
+        return setError("Passwords do not match");
+      }
     }
 
     try {
-      setError("");
-      setLoading(true);
-      await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
-      setLogIn(true);
-      localStorage.setItem("loggedIn", true); // Sets localstorage true to keep user online after page refresh
-      navigate('/home');
-    } catch (err) {
-      setError(err.message);
-      localStorage.setItem("loggedIn", false); // Sets the localstorage false if unsuccessful logging in
+      if (emailRef.current && passwordRef.current && passwordConfirmRef.current) {
+        setError("");
+        setLoading(true);
+        await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
+        setLogIn(true);
+        localStorage.setItem("loggedIn", "true"); // Sets localstorage true to keep user online after page refresh
+        navigate('/home');
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+      localStorage.setItem("loggedIn", "false"); // Sets the localstorage false if unsuccessful logging in
       setTimeout(() => {
         setError("");
       }, 5000)

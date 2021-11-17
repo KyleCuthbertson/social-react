@@ -10,7 +10,8 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-export const LogInContext = React.createContext();
+export const LogInContext = React.createContext<Boolean>(false);
+
 
 const App = () => {
 
@@ -18,7 +19,7 @@ const App = () => {
 
   // Submenu functionality
   const [category, setCategory] = useState('home');
-  const setContent = (selectedCategory) => {
+  const setContent = (selectedCategory: string) => {
     setCategory(selectedCategory);
   }
 
@@ -34,7 +35,7 @@ const App = () => {
     <LogInContext.Provider value={isLoggedIn}>
     <Router>
       <div className="App">
-        <Header loggedIn={isLoggedIn} setLogIn={setIsLoggedIn}/>
+        <Header/>
         <Routes>
           {
           !isLoggedIn ? 
