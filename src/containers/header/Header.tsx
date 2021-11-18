@@ -1,32 +1,30 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { LogInContext } from '../../App';
+import { useAuth } from '../../context/AuthContext';
 
 import Profile from './sidemenu/Profile';
 
 const Header = () => {
 
-  const loggedIn = useContext(LogInContext);
+  const { currentUser }: any = useAuth();
 
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const findingUser = localStorage.getItem("loggedIn");
-
   // Keeps logged out users from entering app content
   useEffect(() => {
-    if (findingUser === "true") {
-      navigate('/home');
-    } else {
+    if (currentUser === "true") {
       navigate('/');
+    } else {
+      navigate('/login');
     }
   }, []);
 
 
   const openMenuToggle = (menuToggle: boolean) => {
-    if (loggedIn) {
+    if (currentUser) {
       setMenuOpen(menuToggle);
     } else {
       return null;
@@ -37,7 +35,7 @@ const Header = () => {
     <>
       <header>
         <h2 className="app-title">ConnectMe</h2>
-        <Profile menu={menuOpen} setLogin={loggedIn} toggleMenu={openMenuToggle}/>
+        <Profile menu={menuOpen} toggleMenu={openMenuToggle}/>
       </header>
     </>
   )
