@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import './App.scss';
 
@@ -10,7 +10,7 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
 export const LogInContext = React.createContext<Boolean>(false);
@@ -18,21 +18,11 @@ export const LogInContext = React.createContext<Boolean>(false);
 
 const App = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   // Submenu functionality
   const [category, setCategory] = useState('home');
   const setContent = (selectedCategory: string) => {
     setCategory(selectedCategory);
   }
-
-  const { currentUser }: any = useAuth();
-
-  useEffect(() => {
-    if (currentUser) {
-      setIsLoggedIn(true);
-    }
-  }, [])
 
   return (
     <AuthProvider>
@@ -52,8 +42,8 @@ const App = () => {
             />
           </Route>
     
-          <Route path="/login" element={<Login setLogIn={setIsLoggedIn}/>}/> 
-          <Route path="/signup" element={<Signup setLogIn={setIsLoggedIn}/>}/>
+          <Route path="/login" element={<Login/>}/> 
+          <Route path="/signup" element={<Signup/>}/>
         </Routes>
       </div>
     </Router>

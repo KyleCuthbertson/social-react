@@ -4,11 +4,8 @@ import { useState, useRef } from 'react';
 
 import { useAuth } from '../context/AuthContext';
 
-import { loginProps } from "./types";
+const Login = () => {
 
-const Login = (props: loginProps) => {
-
-  const { setLogIn } = props;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -28,15 +25,12 @@ const Login = (props: loginProps) => {
       if (emailRef.current && passwordRef.current) {
         await login(emailRef.current['value'], passwordRef.current['value']);
         setLoading(false);
-        setLogIn(true);
         navigate('/'); // Pushes user to home content
-        window.localStorage.setItem("loggedIn", "true"); // Sets localstorage true to keep user online after page refresh  
       }    
     } 
     catch (err) {
       console.error("User not found: " + err);
       setError(true);
-      localStorage.setItem("loggedIn", "false"); // Sets the localstorage false if unsuccessful logging in
       setTimeout(() => {
         setError(false);
       }, 5000)

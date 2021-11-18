@@ -28,10 +28,10 @@ const Profile = (props: profileProps) => {
         <span onClick={() => toggleMenu(false)} className="btn-close"><i className="fas fa-times"></i></span>
         <div className="profile-menu-wrapper">
           <ul className="profile-menu-list">
-            <Link to="/home" onClick={() => toggleMenu(false)}><li>Home</li></Link>
+            <Link to="/" onClick={() => toggleMenu(false)}><li>Home</li></Link>
             <Link to="/myprofile" onClick={() => toggleMenu(false)}><li>My Profile</li></Link>
             <Link to="/settings" onClick={() => toggleMenu(false)}><li>Settings</li></Link>
-            <Link to="/" onClick={handleLogOut}><li>Log Out</li></Link>
+            <Link to="/login" onClick={handleLogOut}><li>Log Out</li></Link>
           </ul>
         </div>
       </div>

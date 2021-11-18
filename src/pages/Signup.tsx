@@ -2,14 +2,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import app from "../utils/firebaseConfig";
-import { loginProps } from "./types";
-
 import { useAuth } from "../context/AuthContext";
 
-const Signup = (props: loginProps) => {
-
-  const { setLogIn } = props;
+const Signup = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -38,8 +33,6 @@ const Signup = (props: loginProps) => {
         setError("");
         setLoading(true);
         await signup(emailRef.current.value, passwordRef.current.value);
-        setLogIn(true);
-        localStorage.setItem("loggedIn", "true"); // Sets localstorage true to keep user online after page refresh
         navigate('/');
       }
     } catch (err: unknown) {
