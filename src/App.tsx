@@ -10,7 +10,7 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
 export const LogInContext = React.createContext<Boolean>(false);
@@ -24,14 +24,11 @@ const App = () => {
     setCategory(selectedCategory);
   }
 
-  const { currentUser }: any = useAuth();
-
   return (
     <AuthProvider>
     <Router>
       <div className="App">
         <Header/>
-        {/* {currentUser ? currentUser.uid : <p>Not logged in</p>} */}
         <Routes>
           
           <Route path="/" element={<PrivateRoute/>}>

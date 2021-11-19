@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthContext';
@@ -12,16 +12,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Keeps logged out users from entering app content
-  useEffect(() => {
-    if (currentUser === "true") {
-      navigate('/');
-    } else {
-      navigate('/login');
-    }
-  }, []);
-
 
   const openMenuToggle = (menuToggle: boolean) => {
     if (currentUser) {
