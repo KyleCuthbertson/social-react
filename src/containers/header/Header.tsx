@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../context/AuthContext';
 
@@ -8,8 +7,6 @@ import Profile from './sidemenu/Profile';
 const Header = () => {
 
   const { currentUser }: any = useAuth();
-
-  const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
