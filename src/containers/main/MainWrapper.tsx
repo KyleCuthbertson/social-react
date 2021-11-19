@@ -9,8 +9,7 @@ import Profile2 from '../../assets/images/profile-2.png';
 import Profile3 from '../../assets/images/profile-3.png';
 
 interface mainWrapperProps {
-  selectedContent: string,
-  loggedIn: boolean
+  selectedContent: string
 }
 
 const MainWrapper = (props: mainWrapperProps) => {

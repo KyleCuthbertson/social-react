@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import './App.scss';
 
@@ -10,12 +10,13 @@ import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
+import { AuthProvider } from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
+
 export const LogInContext = React.createContext<Boolean>(false);
 
 
 const App = () => {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Submenu functionality
   const [category, setCategory] = useState('home');
@@ -23,41 +24,30 @@ const App = () => {
     setCategory(selectedCategory);
   }
 
-  const findingUser = localStorage.getItem("loggedIn");
-
-  useEffect(() => {
-    if (findingUser === "true") {
-      setIsLoggedIn(true);
-    }
-  }, [])
-
   return (
-    <LogInContext.Provider value={isLoggedIn}>
+    <AuthProvider>
     <Router>
       <div className="App">
         <Header/>
         <Routes>
-          {
-          !isLoggedIn ? 
-          <>
-            <Route path="/" element={<Login setLogIn={setIsLoggedIn}/>}/> 
-            <Route path="/signup" element={<Signup setLogIn={setIsLoggedIn}/>}/>
-          </>
-            : 
-          <Route 
-            path="/home" 
-            element={
+          
+          <Route path="/" element={<PrivateRoute/>}>
+           <Route path="/" element=
+            {
             <>
               <SubMenu setContent={setContent} selectedContent={category}/>
-              <MainWrapper loggedIn={isLoggedIn} selectedContent={category}/>
+              <MainWrapper selectedContent={category}/>
             </>
             }
-          />
-          }
+            />
+          </Route>
+    
+          <Route path="/login" element={<Login/>}/> 
+          <Route path="/signup" element={<Signup/>}/>
         </Routes>
       </div>
     </Router>
-  </LogInContext.Provider>
+  </AuthProvider>
   );
 }
 

@@ -1,5 +1,4 @@
 
-import { type } from "os";
 import Posts from "./Posts";
 
 const PostList = (props: any) => {
