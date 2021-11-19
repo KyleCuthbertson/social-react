@@ -1,16 +1,12 @@
 
-
-const Posts = (props) => {
-
+const Posts = (props: any) => {
 
   const { users } = props;
 
-  console.log(users);
-  
   return (
     <>
     {
-    users.map((user) => (
+    users.map((user: any) => (
       <li key={user.userId} className={(user.posts[0].content.image !== null ) ? "picture" : "non-picture"}>
         <p className="post-date">{user.posts[0].dateOfPost}</p>
         <div className="upper-post">

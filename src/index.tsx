@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+// eslint-disable-next-line
+import firebase from './utils/firebaseConfig';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
