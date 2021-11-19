@@ -12,13 +12,13 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 1px solid #2e2e2e;
+    border-bottom: 1px solid #191e29;
     li {
       padding: 15px 5px 10px 5px;
       box-sizing: border-box;
       width: 100%;
       text-align: center;
-      border-right: 1px solid #2e2e2e;
+      border-right: 1px solid #191e29;
       font-size: 1.3rem;
       &.active {
         border-bottom: 2px solid #fff;
