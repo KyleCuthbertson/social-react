@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const Profile = (props) => {
 
@@ -11,10 +11,10 @@ const Profile = (props) => {
         <span onClick={() => toggleMenu(false)} className="btn-close"><i class="fas fa-times"></i></span>
         <div className="profile-menu-wrapper">
           <ul className="profile-menu-list">
-            <li>Home</li>
-            <li>My Profile</li>
-            <li>Settings</li>
-            <li>Log Out</li>
+            <Link to="/home" onClick={() => toggleMenu(false)}><li>Home</li></Link>
+            <Link to="/myprofile" onClick={() => toggleMenu(false)}><li>My Profile</li></Link>
+            <Link to="/settings" onClick={() => toggleMenu(false)}><li>Settings</li></Link>
+            <Link to="/" onClick={() => toggleMenu(false)}><li>Log Out</li></Link>
           </ul>
         </div>
       </div>
