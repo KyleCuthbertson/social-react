@@ -1,0 +1,81 @@
+@mixin imageUploadBtn {
+  background: #fd6048;
+  color: #fff;
+  border: 0;
+  padding: 5px 15px;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+  outline: none;
+}
+
+.newpost-title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.newpost-form {
+  width: 95%;
+  max-width: 450px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.newpost-text {
+  font-size: 1.1rem;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #171c25;
+  color: #fff;
+  margin: 30px 0;
+  padding: 10px;
+  min-height: 150px;
+  border: 0;
+}
+
+.image-upload-wrapper {
+  width: 100%;
+  padding: 35px 10px;
+  background: #171c25;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 6px;
+  span {
+    margin-bottom: 10px;
+    color: #fff;
+  }
+}
+
+input::-webkit-file-upload-button,
+input[type="file"]::file-selector-button {
+  @include imageUploadBtn;
+}
+
+.post-btn {
+  border: 0;
+  border-radius: 4px;
+  background: #fd6048;
+  padding: 10px;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  min-width: 180px;
+  cursor: pointer;
+  margin: 0 auto;
+}

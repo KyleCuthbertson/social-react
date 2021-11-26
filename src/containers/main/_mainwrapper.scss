@@ -1,5 +1,9 @@
 @use "../../components/post-list/posts";
+@use "../../components/new-post/newpost";
+@use "../../pages/content-pages/newpostpage";
 @use "../../components/messages/messages";
+@use "../../pages/user-pages/myProfile";
+@use "../../pages/user-pages/settings";
 
 .main-content-wrapper {
   width: 100%;
@@ -8,5 +12,16 @@
   padding: 20px 5px;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   background: #1f2633;
+}
+
+.main-content-loading {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 30px auto 0 auto;
+  font-size: 2rem;
 }
