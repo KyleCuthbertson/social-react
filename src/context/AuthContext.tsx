@@ -17,14 +17,15 @@ export function AuthProvider({ children }: any) {
 
   // Sign up user to firebase
   const signup = (email: string, password: string) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password)
   }
   
   // Login user to firebase
   const login = (email: string, password: string) => {
-    return auth.signInWithEmailAndPassword(email, password);
+    return auth.signInWithEmailAndPassword(email, password)
   }
 
+  // Log out of firebase
   const logOut = () => {
     return auth.signOut();
   }

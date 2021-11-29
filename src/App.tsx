@@ -9,9 +9,13 @@ import MainWrapper from './containers/main/MainWrapper';
 import SubMenu from './containers/submenu/SubMenu';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import MyProfile from './pages/user-pages/MyProfile';
+import Settings from './pages/user-pages/Settings';
 
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import NewPostPage from './pages/content-pages/NewPostPage';
+
 
 export const LogInContext = React.createContext<Boolean>(false);
 
@@ -40,10 +44,14 @@ const App = () => {
             </>
             }
             />
+            <Route path="/myprofile" element={<MyProfile/>}/>
+            <Route path="/settings" element={<Settings/>}/>
+            <Route path="/newpost" element={<NewPostPage/>}/>
           </Route>
     
           <Route path="/login" element={<Login/>}/> 
           <Route path="/signup" element={<Signup/>}/>
+          
         </Routes>
       </div>
     </Router>

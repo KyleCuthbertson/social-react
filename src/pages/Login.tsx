@@ -51,7 +51,7 @@ const Login = () => {
             <input type="password" ref={passwordRef} id="password" min-length="5" name="password" required/>
 
           <div className="signup-btn-wrapper">
-            <button className="signup-btns" disabled={loading} type="submit">{loading ? <i className="fas fa-circle-notch loading-icon"></i> : <span>Log in</span>}</button>
+            <button className="signup-btns" title="Log in!" disabled={loading} type="submit">{loading ? <i className="fas fa-circle-notch loading-icon"></i> : <span>Log in</span>}</button>
           </div>
 
           <div className="no-account-wrapper">
