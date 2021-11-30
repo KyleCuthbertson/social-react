@@ -33,12 +33,18 @@ const MainWrapper = (props: mainWrapperProps) => {
   // }
 
   useEffect(() => {
-
+    
     db.collection("posts").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc: any) => {
-        postResults.push(doc.data());
+        const document = doc.data();
+        document.docId = doc.id;
+        postResults.push(document);
       })
-      setPosts(postResults);
+
+      let newResults = postResults.sort(function(a, b) {
+        return b.dateCreated - a.dateCreated;
+      });
+      setPosts(newResults);
     })
 
     db.collection("users").onSnapshot((querySnapshot) => {
@@ -48,7 +54,7 @@ const MainWrapper = (props: mainWrapperProps) => {
       setUsers(userResults);
       setLoading(false);
     })    
-
+    
     window.scrollTo(0, 0);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

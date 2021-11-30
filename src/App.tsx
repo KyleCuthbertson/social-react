@@ -15,6 +15,7 @@ import Settings from './pages/user-pages/Settings';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import NewPostPage from './pages/content-pages/NewPostPage';
+import EditPostPage from './pages/content-pages/EditPostPage';
 
 
 export const LogInContext = React.createContext<Boolean>(false);
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/myprofile" element={<MyProfile/>}/>
             <Route path="/settings" element={<Settings/>}/>
             <Route path="/newpost" element={<NewPostPage/>}/>
+            <Route path="/editpost" element={<EditPostPage/>}/>
           </Route>
     
           <Route path="/login" element={<Login/>}/> 

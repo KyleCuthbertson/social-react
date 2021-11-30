@@ -8,6 +8,18 @@
   cursor: pointer;
 }
 
+@mixin new-edit-delete-btn {
+  border: 0;
+  border-radius: 4px;
+  padding: 10px;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  min-width: 180px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
 textarea {
   resize: none;
   outline: none;
@@ -68,14 +80,15 @@ input[type="file"]::file-selector-button {
 }
 
 .post-btn {
-  border: 0;
-  border-radius: 4px;
+  @include new-edit-delete-btn;
   background: #fd6048;
-  padding: 10px;
-  color: #fff;
-  font-size: 1.4rem;
-  font-weight: 400;
-  min-width: 180px;
-  cursor: pointer;
-  margin: 0 auto;
+}
+
+.delete-btn {
+  @include new-edit-delete-btn;
+  background: #5c0f0f;
+  margin-top: 70px;
+  i {
+    margin-left: 10px;
+  }
 }
