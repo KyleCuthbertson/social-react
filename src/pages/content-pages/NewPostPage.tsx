@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom";
 const NewPostPage = () => {
 
   const [newPostText, setNewPostText] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { currentUser }: any = useAuth();
   const navigate = useNavigate();
 
   const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+    setLoading(true);
     return await db.collection('posts')
     .doc()
     .set({
@@ -24,7 +25,6 @@ const NewPostPage = () => {
       userId: currentUser.uid,
       userImage: "" 
     }).then(() => {
-      console.log("New Post added!");
       navigate("../");
     })
   }
@@ -38,7 +38,7 @@ const NewPostPage = () => {
           <span>Upload image</span>
           <input type="file" id="img" name="img" accept="image/*"/>
         </div> */}
-        <button className="post-btn" type="submit">Post</button>
+        <button className="post-btn" type="submit">{loading ? <i className="fas fa-circle-notch loading-icon"></i> : <span>Create Post</span>}</button>
       </form>
     </>
   )

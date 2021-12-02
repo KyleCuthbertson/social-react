@@ -34,7 +34,7 @@
   justify-content: left;
   align-items: center;
   padding: 0 5px;
-  margin: 10px 0 20px 0;
+  margin: 30px 0 20px 0;
   img {
     border-radius: 50%;
     width: 40px;
@@ -86,13 +86,43 @@
 
 .post-date {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  left: 15px;
   font-size: 0.7rem;
   font-weight: 700;
   font-style: italic;
   opacity: 0.45;
-  &:before {
-    content: "Posted: ";
+  text-align: left;
+}
+
+.post-controls {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  button {
+    font-size: 1.2rem;
+    opacity: 0.45;
+    text-align: center;
+    border: 0;
+    outline: none;
+    background: none;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .post-controls button {
+    font-size: 1.4rem;
+  }
+  .post-date {
+    font-size: 0.9rem;
+  }
+
+  .upper-post .post-author {
+    font-size: 1rem;
+  }
+
+  .mid-post .post-text {
+    font-size: 1rem;
   }
 }
