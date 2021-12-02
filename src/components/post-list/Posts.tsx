@@ -2,8 +2,10 @@ import defaultPicture from "../../assets/images/defaultProfile.jpeg";
 import defaultPostPicture from "../../assets/images/defaultPostImage.jpeg";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { postProps } from "./types";
+import { unixConversion } from "../../utils/unixConversion";
 
-const Posts = (props: any) => {
+const Posts = (props: postProps) => {
 
   const { users, posts } = props;
 
@@ -13,9 +15,8 @@ const Posts = (props: any) => {
   users.map((user: { listOfPosts: Array<Object>; id: string }) => {
     return user.listOfPosts = posts.filter(((post: { userId: string; }) => post.userId === user.id)); 
   })
-  
 
-  let userPosts: any[] = [];
+  let userPosts: postProps["posts"] = [];
 
   users.map((user: { listOfPosts: Array<Object>, id: string }) => {
     user.listOfPosts.map((post: any) => {
@@ -27,13 +28,6 @@ const Posts = (props: any) => {
   let newResults = userPosts.sort((a, b) => {
     return b.dateCreated - a.dateCreated;
   });
-
-
-  // Converts to time and date for each post
-  const unixConversion = (dt: number, time: boolean) => {
-    const dateObject = new Date(dt);
-    return time ? `${dateObject.getHours()}:${(dateObject.getMinutes() < 10 ? "0" : "") + dateObject.getMinutes()}` : dateObject.toLocaleDateString()
-  }
 
   // Retrieves first and last name depending on the post's author
   const getUserData = (userId: string) => {
