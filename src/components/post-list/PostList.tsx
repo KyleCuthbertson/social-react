@@ -1,7 +1,8 @@
 
 import Posts from "./Posts";
+import { postProps } from "./types";
 
-const PostList = (props: any) => {
+const PostList = (props: postProps) => {
 
   const { users, posts } = props; 
 
