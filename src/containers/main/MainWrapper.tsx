@@ -21,7 +21,6 @@ const MainWrapper = (props: mainWrapperProps) => {
   const postResults: any[] = [];
   const userResults: any[] = [];
 
-
   // const ChangeContent = () => {
   //   if (selectedContent === 'home') {
       
@@ -54,6 +53,7 @@ const MainWrapper = (props: mainWrapperProps) => {
       setUsers(userResults);
       setLoading(false);
     })    
+
     
     window.scrollTo(0, 0);
   // eslint-disable-next-line react-hooks/exhaustive-deps

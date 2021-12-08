@@ -1,3 +1,6 @@
+import { db } from "../../utils/firebaseConfig";
+
+import { useEffect } from "react";
 import defaultPicture from "../../assets/images/defaultProfile.jpeg";
 import defaultPostPicture from "../../assets/images/defaultPostImage.jpeg";
 import { useAuth } from "../../context/AuthContext";
@@ -19,7 +22,7 @@ const Posts = (props: postProps) => {
   let userPosts: postProps["posts"] = [];
 
   users.map((user: { listOfPosts: Array<Object>, id: string }) => {
-    user.listOfPosts.map((post: any) => {
+    return user.listOfPosts.map((post: any) => {
       return userPosts.push(post);
     });
   })
@@ -41,6 +44,64 @@ const Posts = (props: postProps) => {
   const editPost = (id: string, text: string) => {
     navigate('./editpost', { state:{ docId: id, bodyText: text }});
   }
+
+  
+
+  const likePost = async (userId: string, docId: string) => {
+
+    const getLikeArray = await (await db.collection('posts')
+    .doc(docId)
+    .get())
+    .data();
+    
+    if (getLikeArray) {
+      const likeArray = getLikeArray.listOfLikes;
+      const likeCount = getLikeArray.likeCount;
+      const index = likeArray.indexOf(userId);
+
+      if (likeArray.includes(userId)) {
+        likeArray.splice(index, 1);
+        await db.collection('posts').doc(docId).update({
+          likeCount: likeCount - 1,
+          listOfLikes: [...likeArray]
+        })
+        .then(() => {
+          console.log("Succesfully unliked the post");
+        })
+        .catch(() => {
+          console.error("Unable to unlike post");
+        })
+      } else {
+        await db.collection('posts').doc(docId).update({
+          likeCount: likeCount + 1,
+          listOfLikes: [...likeArray, userId]
+        })
+        .then(() => {
+          console.log("Successfully liked the post");
+        })
+        .catch(() => {
+          console.error("Unable to like post");
+        })
+      } 
+    }
+  }
+
+
+  // useEffect(() => {
+
+  //   db.collection('likes').onSnapshot((querySnapshot) => {
+  //     querySnapshot.forEach((doc: any) => {
+  //       if (doc.data().documentId) {
+  //         console.log(doc.data())
+  //       }
+  //     })
+  //   })
+  //   // On page load check if current user has liked specific post
+  // }, [])
+  
+
+
+
 
   return (
     <>
@@ -73,7 +134,12 @@ const Posts = (props: postProps) => {
           </p>
         </div>
         <div className="lower-post">
-          <button title="like"><i className="far fa-heart"></i>{post.likeCount}</button>
+          <button onClick={() => likePost(currentUser.uid, post.docId)} 
+          title="like">
+            {
+              post.listOfLikes.includes(currentUser.uid) ? <i className="fa fa-heart"></i> : <i className="far fa-heart"></i>
+            }
+            {post.likeCount}</button>
           <button title="comment"><i className="fas fa-comment-dots"></i>{post.commentCount}</button>
         </div>
       </li>

@@ -21,6 +21,7 @@ const NewPostPage = () => {
       dateCreated: Date.now(),
       commentCount: 0,
       likeCount: 0,
+      listOfLikes: [],
       userHandle: currentUser.email,
       userId: currentUser.uid,
       userImage: "" 

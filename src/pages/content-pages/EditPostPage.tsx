@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 import { db } from "../../utils/firebaseConfig";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -10,8 +9,6 @@ const EditPostPage = () => {
 
   const [editPostText, setEditPostText] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const { currentUser }: any = useAuth();
 
   const navigate = useNavigate();
 
