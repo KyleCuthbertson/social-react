@@ -10,3 +10,5 @@ Technologies (currently):
 • HTML
 
 Using Firebase to create Authentication and using the Firestore to store data of user's posts.
+
+Project was set up without the TypeScript template, so files have been converted to TypeScript.

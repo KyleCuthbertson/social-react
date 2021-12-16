@@ -1,6 +1,5 @@
 import { db } from "../../utils/firebaseConfig";
 
-import { useEffect } from "react";
 import defaultPicture from "../../assets/images/defaultProfile.jpeg";
 import defaultPostPicture from "../../assets/images/defaultPostImage.jpeg";
 import { useAuth } from "../../context/AuthContext";
@@ -11,6 +10,7 @@ import { unixConversion } from "../../utils/unixConversion";
 const Posts = (props: postProps) => {
 
   const { users, posts } = props;
+
 
   const { currentUser }: any = useAuth();
   const navigate = useNavigate();
@@ -45,11 +45,11 @@ const Posts = (props: postProps) => {
     navigate('./editpost', { state:{ docId: id, bodyText: text }});
   }
 
-  
+
 
   const likePost = async (userId: string, docId: string) => {
 
-    const getLikeArray = await (await db.collection('posts')
+    const getLikeArray = (await db.collection('posts')
     .doc(docId)
     .get())
     .data();
@@ -83,25 +83,21 @@ const Posts = (props: postProps) => {
           console.error("Unable to like post");
         })
       } 
+
+      const newLikeCount = (await db.collection('posts')
+      .doc(docId)
+      .get())
+      .data();
+
+      if (newLikeCount) {
+        getNumber(newLikeCount.likeCount);
+      }
     }
   }
 
-
-  // useEffect(() => {
-
-  //   db.collection('likes').onSnapshot((querySnapshot) => {
-  //     querySnapshot.forEach((doc: any) => {
-  //       if (doc.data().documentId) {
-  //         console.log(doc.data())
-  //       }
-  //     })
-  //   })
-  //   // On page load check if current user has liked specific post
-  // }, [])
-  
-
-
-
+  const getNumber = (value: number | undefined) => {
+    return value;
+  }
 
   return (
     <>
@@ -139,7 +135,7 @@ const Posts = (props: postProps) => {
             {
               post.listOfLikes.includes(currentUser.uid) ? <i className="fa fa-heart"></i> : <i className="far fa-heart"></i>
             }
-            {post.likeCount}</button>
+            {getNumber(post.likeCount)}</button>
           <button title="comment"><i className="fas fa-comment-dots"></i>{post.commentCount}</button>
         </div>
       </li>

@@ -32,7 +32,7 @@ const MainWrapper = (props: mainWrapperProps) => {
   // }
 
   useEffect(() => {
-    
+
     db.collection("posts").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc: any) => {
         const document = doc.data();
@@ -54,8 +54,8 @@ const MainWrapper = (props: mainWrapperProps) => {
       setLoading(false);
     })    
 
-    
     window.scrollTo(0, 0);
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
