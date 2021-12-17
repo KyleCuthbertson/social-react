@@ -1,3 +1,10 @@
+/* New post page */
+@use "./content-pages/newpostpage";
+
+/* User pages */
+@use "./user-pages/myProfile";
+@use "./user-pages/settings";
+
 .form-title {
   font-size: 2.4rem;
   color: #fff;

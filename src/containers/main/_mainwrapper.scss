@@ -1,9 +1,6 @@
 @use "../../components/post-list/posts";
 @use "../../components/new-post/newpost";
-@use "../../pages/content-pages/newpostpage";
 @use "../../components/messages/messages";
-@use "../../pages/user-pages/myProfile";
-@use "../../pages/user-pages/settings";
 
 .main-content-wrapper {
   width: 100%;

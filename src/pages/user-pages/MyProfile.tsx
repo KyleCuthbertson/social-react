@@ -1,13 +1,12 @@
-// import { useAuth } from "../../context/AuthContext";
 
 const MyProfile = () => {
 
-  // const { currentUser }: any = useAuth(); 
-
-
   return (
     <>
-      <h2>My Profile</h2>
+      <h2 className="form-title">My Profile</h2>
+      <div className="user-page-wrapper">
+      
+       </div>
     </>
   )
 }
